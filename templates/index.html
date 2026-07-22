@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SentinelShield Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <h1>SentinelShield</h1>
+        <p>Interactive intrusion detection and web protection demo for practical cybersecurity work.</p>
+      </section>
+
+      <section class="panel">
+        <form id="demo-form">
+          <label>Target URL</label>
+          <input type="text" name="target_url" value="http://demo.local/login" required>
+
+          <label>Method</label>
+          <select name="method">
+            <option>GET</option>
+            <option>POST</option>
+          </select>
+
+          <label>Payload</label>
+          <textarea name="payload" rows="4">admin' OR '1'='1</textarea>
+
+          <label>Source IP</label>
+          <input type="text" name="ip" value="203.0.113.15">
+
+          <button type="submit">Submit Request</button>
+        </form>
+
+        <div id="result" class="result"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Dashboard Summary</h2>
+        <div id="dashboard" class="stats"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Recent Events</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>IP</th>
+              <th>Category</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="event-table"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
